@@ -11,12 +11,13 @@
         this.post = post;
         var debug = true;
 
-        function get(path, params) {
+        function get(path, params, headers) {
             path = path + '?' + Math.round(Math.random() * 10000);
 
             return $http
                 .get(path, {
-                    params: params
+                    params: params,
+                    headers: headers
                 })
                 .then(complete)
                 .catch(error);

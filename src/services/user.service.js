@@ -18,8 +18,9 @@
 
         function getRepos(user) {
             var url = CONST.api.base.concat('users/', user, '/repos');
-            var params = { access_token : CONST.api.access_token};
-            return HTTPService.get(url, params)
+            var headers = { Authorization : CONST.api.access_token};
+
+            return HTTPService.get(url, {}, headers)
                 .then(function (data) {
                    return data
                 })
@@ -27,9 +28,9 @@
 
         function getStarredRepos(user) {
             var url = CONST.api.base.concat('users/', user, '/starred');
-            var params = { access_token : CONST.api.access_token};
+            var headers = { Authorization : CONST.api.access_token};
 
-            return HTTPService.get(url, params)
+            return HTTPService.get(url, {}, headers)
                 .then(function (data) {
                     return data
                 })
