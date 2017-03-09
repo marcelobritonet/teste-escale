@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>App Exemplo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <base href="/">
+    <link rel="shortcut icon" href="/imgs/favicon.png">
+
+    <!-- build:css css/style.min.css -->
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- endbuild -->
+
+</head>
+<body>
+
+<div ng-app="app">
+    <main ui-view="content"></main>
+</div>
+
+<!-- build:js js/scripts.min.js -->
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../node_modules/angular/angular.js"></script>
+<script src="../node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- DEFAULTS -->
+<script src="app/app.module.js"></script>
+<script src="app/app.config.js"></script>
+<script src="app/app.run.js"></script>
+<script src="app/app.constants.js"></script>
+<script src="app/app.router.js"></script>
+
+<!-- PROVIDERS -->
+<script src="providers/data.provider.js"></script>
+<script src="providers/http.provider.js"></script>
+
+<!-- SERVICES -->
+
+<!-- DIRECTIVES -->
+<!--<script src="directives/input-auto-size.directive.js"></script>-->
+
+<!-- COMPONENTS -->
+<!--<script src="components/planos/planos.component.js"></script>-->
+
+<!-- FILTERS -->
+<!--<script src="filters/exemplo.filter.js"></script>-->
+
+<!-- endbuild -->
+</body>
+</html>
