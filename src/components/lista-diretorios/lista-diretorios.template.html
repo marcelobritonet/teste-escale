@@ -1,11 +1,41 @@
-<input type="text"
-       data-ng-model="vm.user"/>
-<button data-ng-click="vm.getRepos(vm.user)"
-        data-ng-disabled="vm.getRepos.loading">Buscar Usuário
+<label>Usuário
+    <input type="text"
+           data-ng-model="vm.user"/>
+</label>
+<label>
+    Ordenar Repositórios
+    <select name="selectOrdenarRepos"
+            data-ng-model="vm.ordernarRepos">
+        <option value="name">Alfabeticamente</option>
+        <option value="-stargazers_count">Número de estrelas</option>
+        <option value="-open_issues">Questões Abertas</option>
+    </select>
+</label>
+<label data-ng-if="vm.languageList">
+    Filtrar por
+    <select name="selectFiltro"
+            data-ng-model="vm.filtroLinguagem">
+        <option value="" disabled>selecione um filtro...</option>
+        <option value="{{item}}"
+                data-ng-repeat="item in vm.languageList">{{item}}
+        </option>
+    </select>
+</label>
+<button data-ng-click="vm.getStarredRepos(vm.user)"
+        data-ng-disabled="vm.getStarredRepos.loading">Listar repositórios favoritos
 </button>
 <ul>
-    <li data-ng-repeat="repo in vm.repos">
-        <pre>{{repo.name}}</pre>
-        <pre>{{repo}}</pre>
+    <li data-ng-repeat="repo in vm.repos | orderBy : vm.ordernarRepos | filter : vm.filtroLinguagem">
+        <div>{{repo.name}}</div>
+        <div>avatar: {{repo.avatar_url}}</div>
+        <div>url: {{repo.url}}</div>
+        <div>description: {{repo.description}}</div>
+        <div>language: {{repo.language}}</div>
+        <div>star: {{repo.stargazers_count}}</div>
+        <div>questões abertas: {{repo.open_issues_count}}</div>
+        <div>Criado em: {{repo.created}}</div>
+        <div>Pushed: {{repo.pushed}}</div>
+        <div>url: {{repo.url}}</div>
+        <hr>
     </li>
 </ul>
