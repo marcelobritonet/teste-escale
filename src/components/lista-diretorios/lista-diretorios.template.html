@@ -2,7 +2,7 @@
     <input type="text"
            data-ng-model="vm.user"/>
 </label>
-<label>
+<label data-ng-if="vm.repos">
     Ordenar Repositórios
     <select name="selectOrdenarRepos"
             data-ng-model="vm.ordernarRepos">
@@ -11,7 +11,7 @@
         <option value="-open_issues">Questões Abertas</option>
     </select>
 </label>
-<label data-ng-if="vm.languageList">
+<label data-ng-if="vm.repos && vm.languageList">
     Filtrar por
     <select name="selectFiltro"
             data-ng-model="vm.filtroLinguagem">
@@ -24,7 +24,7 @@
 <button data-ng-click="vm.getStarredRepos(vm.user)"
         data-ng-disabled="vm.getStarredRepos.loading">Listar repositórios favoritos
 </button>
-<ul>
+<ul data-ng-if="vm.repos">
     <li data-ng-repeat="repo in vm.repos | orderBy : vm.ordernarRepos | filter : vm.filtroLinguagem">
         <div>{{repo.name}}</div>
         <div>avatar: {{repo.avatar_url}}</div>
