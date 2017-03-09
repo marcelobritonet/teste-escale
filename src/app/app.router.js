@@ -12,9 +12,10 @@
 
         $stateProvider
             .state('home', {
+                url: '/',
                 views: {
                     'main': {
-                        templateUrl: 'partials/header.html'
+                        template: '<lista-diretorios></lista-diretorios>'
                     }
                 }
             });
