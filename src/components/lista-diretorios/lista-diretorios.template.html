@@ -1,1 +1,11 @@
-<p>{{vm.teste}}</p>
+<input type="text"
+       data-ng-model="vm.user"/>
+<button data-ng-click="vm.getRepos(vm.user)"
+        data-ng-disabled="vm.getRepos.loading">Buscar Usuário
+</button>
+<ul>
+    <li data-ng-repeat="repo in vm.repos">
+        <pre>{{repo.name}}</pre>
+        <pre>{{repo}}</pre>
+    </li>
+</ul>

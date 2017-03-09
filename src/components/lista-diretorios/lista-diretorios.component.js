@@ -9,11 +9,30 @@
             controllerAs: 'vm'
         });
 
-    ListaDiretoriosController.$inject = [];
+    ListaDiretoriosController.$inject = [
+        'userService'
+    ];
 
-    function ListaDiretoriosController() {
+    function ListaDiretoriosController(userService) {
         var vm = this;
-        vm.teste = 'dentro do component';
-        console.log(vm)
+
+        vm.user = 'wilfernandesjr';
+
+        vm.getRepos = getRepos;
+        vm.getStarredRepos = getStarredRepos;
+
+        function getRepos(user) {
+            vm.getRepos.loading = true;
+
+            userService.getRepos(user)
+                .then(function (repos) {
+                    vm.getRepos.loading = false;
+                    vm.repos = repos;
+                })
+        }
+        
+        function getStarredRepos(user) {
+
+        }
     }
 })();

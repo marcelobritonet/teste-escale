@@ -9,6 +9,7 @@
     function HTTPService($http) {
         this.get = get;
         this.post = post;
+        var debug = true;
 
         function get(path, params) {
             path = path + '?' + Math.round(Math.random() * 10000);

@@ -4,6 +4,9 @@
     angular
         .module('app')
         .constant('CONST', {
-            api : 'url'
+            api : {
+                base: 'https://api.github.com/',
+                // repos: 'https://api.github.com/users/marcelobritonet/repos'
+            }
         });
 })();
