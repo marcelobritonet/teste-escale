@@ -10,10 +10,11 @@
         });
 
     ListaDiretoriosController.$inject = [
-        'userService'
+        'userService',
+        '$sce'
     ];
 
-    function ListaDiretoriosController(userService) {
+    function ListaDiretoriosController(userService, $sce) {
         var vm = this;
 
         vm.user = 'wilfernandesjr';
