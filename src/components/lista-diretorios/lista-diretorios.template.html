@@ -27,14 +27,14 @@
 <ul data-ng-if="vm.repos">
     <li data-ng-repeat="repo in vm.repos | orderBy : vm.ordernarRepos | filter : vm.filtroLinguagem">
         <div>{{repo.name}}</div>
-        <div>avatar: {{repo.avatar_url}}</div>
+        <div>avatar: {{repo.owner.avatar_url}}</div>
         <div>url: {{repo.url}}</div>
         <div>description: {{repo.description}}</div>
         <div>language: {{repo.language}}</div>
         <div>star: {{repo.stargazers_count}}</div>
         <div>questões abertas: {{repo.open_issues_count}}</div>
-        <div>Criado em: {{repo.created}}</div>
-        <div>Pushed: {{repo.pushed}}</div>
+        <div>Criado em: {{repo.created_at}}</div>
+        <div>Pushed: {{repo.pushed_at}}</div>
         <div>url: {{repo.url}}</div>
         <hr>
     </li>
