@@ -36,8 +36,11 @@
             }
         }
 
-        function post(path, params) {
-            return $http.post(path, params)
+        function post(path, data, headers) {
+            return $http
+                .post(path, data, {
+                    headers: headers
+                })
                 .then(complete)
                 .catch(error);
 

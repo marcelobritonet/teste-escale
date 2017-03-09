@@ -27,8 +27,10 @@
         }
 
         function getStarredRepos(user) {
-            var url = CONST.api.base.concat('users/', user, '/starred');
-            var headers = { Authorization : CONST.api.access_token};
+            var url = CONST.api.base.concat('users/', user, '/starred'),
+                headers = {};
+            // var headers = { Authorization : CONST.api.access_token};
+            // var headers = { Authorization : 'token ' + CONST.api.access_token};
 
             return HTTPService.get(url, {}, headers)
                 .then(function (data) {

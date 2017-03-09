@@ -42,6 +42,7 @@
                     vm.getStarredRepos.loading = false;
                     vm.repos = repos;
                     vm.languageList = getLanguagesList(repos);
+                    console.log(repos)
                 })
         }
 
