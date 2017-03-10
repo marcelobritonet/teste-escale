@@ -1,43 +1,51 @@
-<div class="lista-diretorios">
-    <label>Usuário
-        <input type="text"
-               data-ng-model="vm.user"/>
-    </label>
-    <label data-ng-if="vm.repos">
-        Ordenar Repositórios
-        <select name="selectOrdenarRepos"
-                data-ng-model="vm.ordernarRepos">
-            <option value="name">Alfabeticamente</option>
-            <option value="-stargazers_count">Número de estrelas</option>
-            <option value="-open_issues">Questões Abertas</option>
-        </select>
-    </label>
-    <label data-ng-if="vm.repos && vm.languageList">
-        Filtrar por
-        <select name="selectFiltro"
-                data-ng-model="vm.filtroLinguagem">
-            <option value="">Todas</option>
-            <option value="{{item}}"
-                    data-ng-repeat="item in vm.languageList">{{item}}
-            </option>
-        </select>
-    </label>
+<div class="w3-container w3-theme-d4">
+    <input type="text" data-ng-model="vm.user"/>
     <button data-ng-click="vm.getStarredRepos(vm.user)"
-            data-ng-disabled="vm.getStarredRepos.loading">Listar repositórios favoritos
+            data-ng-disabled="vm.getStarredRepos.loading">Buscar
     </button>
-    <ul data-ng-if="vm.repos">
-        <li class="card-diretorio"
-            data-ng-repeat="repo in vm.repos | orderBy : vm.ordernarRepos | filter : vm.filtroLinguagem">
-            <div>{{repo.name}}</div>
-            <img data-ng-src="{{ repo.owner.avatar_url | trustUrl }}">
-            <div>description: {{repo.description}}</div>
-            <div>language: {{repo.language}}</div>
-            <div>star: {{repo.stargazers_count}}</div>
-            <div>questões abertas: {{repo.open_issues_count}}</div>
-            <div>Criado em: {{repo.created_at}}</div>
-            <div>Pushed: {{repo.pushed_at}}</div>
-            <div><a data-ng-href="{{repo.url | trustUrl}}">link diretório</a></div>
-            <hr>
-        </li>
-    </ul>
+</div>
+<div class="w3-container">
+    <div class="lista-diretorios">
+        <div class="w3-row">
+            <div class="w3-col m9 l9">
+                <ul data-ng-if="vm.repos">
+                    <li class="card-diretorio"
+                        data-ng-repeat="repo in vm.repos | orderBy : vm.ordernarRepos | filter : vm.filtroLinguagem">
+                        <div>{{repo.name}}</div>
+                        <img data-ng-src="{{ repo.owner.avatar_url | trustUrl }}">
+                        <div>description: {{repo.description}}</div>
+                        <div>language: {{repo.language}}</div>
+                        <div>star: {{repo.stargazers_count}}</div>
+                        <div>questões abertas: {{repo.open_issues_count}}</div>
+                        <div>Criado em: {{repo.created_at}}</div>
+                        <div>Pushed: {{repo.pushed_at}}</div>
+                        <div><a data-ng-href="{{repo.url | trustUrl}}">link diretório</a></div>
+                        <hr>
+                    </li>
+                </ul>
+                <p data-ng-if="!vm.repos">Selecione um usuário</p>
+            </div>
+            <div class="w3-col m9 l3">
+                <label data-ng-if="vm.repos">
+                    Ordenar Repositórios
+                    <select name="selectOrdenarRepos"
+                            data-ng-model="vm.ordernarRepos">
+                        <option value="name">Alfabeticamente</option>
+                        <option value="-stargazers_count">Número de estrelas</option>
+                        <option value="-open_issues">Questões Abertas</option>
+                    </select>
+                </label>
+                <label data-ng-if="vm.repos && vm.languageList">
+                    Filtrar por
+                    <select name="selectFiltro"
+                            data-ng-model="vm.filtroLinguagem">
+                        <option value="">Todas</option>
+                        <option value="{{item}}"
+                                data-ng-repeat="item in vm.languageList">{{item}}
+                        </option>
+                    </select>
+                </label>
+            </div>
+        </div>
+    </div>
 </div>

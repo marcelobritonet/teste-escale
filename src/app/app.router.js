@@ -14,6 +14,9 @@
             .state('home', {
                 url: '/',
                 views: {
+                    'header':{
+                        template: '<header-box></header-box>'
+                    },
                     'main': {
                         template: '<lista-diretorios></lista-diretorios>'
                     }

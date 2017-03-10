@@ -9,6 +9,8 @@
 
     <!-- build:css css/style.min.css -->
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-amber.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <!-- endbuild -->
 
@@ -16,6 +18,7 @@
 <body>
 
 <div ng-app="app">
+    <header ui-view="header"></header>
     <main ui-view="main"></main>
 </div>
 
@@ -43,6 +46,7 @@
 
 <!-- COMPONENTS -->
 <script src="components/lista-diretorios/lista-diretorios.component.js"></script>
+<script src="components/header-box/header-box.component.js"></script>
 
 <!-- FILTERS -->
 <script src="filters/trust-url/trust-url.filter.js"></script>
