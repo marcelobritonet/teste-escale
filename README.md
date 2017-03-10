@@ -14,16 +14,22 @@ Este projeto tem como finalidade exibir uma lista de repositórios favoritos bas
 
 # Dependências Globais
 Para iniciar o projeto você irá precisar que algumas dependências estejam instaladas globalmente:
+
   - NodeJs - https://nodejs.org/en/download/
+
 # Instalação de Dependências
   Depois de clonar o projeto localmente instale as dependências do projeto. Insira no terminal o seguinte comando para instalar todas as depedências necessárias.
+
 ```sh
 $ npm install
 ```
+
 # Rodando o projeto
-Depois de todas as dependências instaladas rode o projeto usando a seguinte linha de comando
+Depois de todas as dependências instaladas rode o projeto usando a seguinte linha de comando:
+
 ```sh
 $ gulp default
 ```
+
 # Autor
   - Veja mais em linkedin.com/in/marcelobritonet/
