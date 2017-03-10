@@ -1,51 +1,78 @@
-<div class="w3-container w3-theme-d4">
-    <input type="text" data-ng-model="vm.user"/>
-    <button data-ng-click="vm.getStarredRepos(vm.user)"
-            data-ng-disabled="vm.getStarredRepos.loading">Buscar
-    </button>
-</div>
-<div class="w3-container">
-    <div class="lista-diretorios">
-        <div class="w3-row">
-            <div class="w3-col m9 l9">
-                <ul data-ng-if="vm.repos">
-                    <li class="card-diretorio"
-                        data-ng-repeat="repo in vm.repos | orderBy : vm.ordernarRepos | filter : vm.filtroLinguagem">
-                        <div>{{repo.name}}</div>
-                        <img data-ng-src="{{ repo.owner.avatar_url | trustUrl }}">
-                        <div>description: {{repo.description}}</div>
-                        <div>language: {{repo.language}}</div>
-                        <div>star: {{repo.stargazers_count}}</div>
-                        <div>questões abertas: {{repo.open_issues_count}}</div>
-                        <div>Criado em: {{repo.created_at}}</div>
-                        <div>Pushed: {{repo.pushed_at}}</div>
-                        <div><a data-ng-href="{{repo.url | trustUrl}}">link diretório</a></div>
-                        <hr>
-                    </li>
-                </ul>
-                <p data-ng-if="!vm.repos">Selecione um usuário</p>
+<div class="lista-diretorios">
+    <div class="w3-row w3-theme-d1">
+        <div class="w3-col l3 w3-hide-medium w3-hide-small w3-container w3-padding-16 w3-xlarge w3-opacity">
+            <i class="w3-xlarge fa fa-bars"></i>
+        </div>
+
+        <div class="user-search w3-col l7 s12 w3-container w3-padding-16 w3-xlarge">
+            <input style="width: 80%;" class="w3-border-0 w3-show-inline-block w3-theme" placeholder="username git"
+                   data-ng-model="vm.user">
+
+            <i class="w3-xlarge fa fa-search"
+               data-ng-click="vm.getStarredRepos(vm.user)"
+               data-ng-disabled="vm.getStarredRepos.loading"></i>
+        </div>
+
+        <div class=" w3-col l2 w3-hide-medium w3-hide-small w3-container w3-padding-8">
+            <div class="w3-right">
+                <img class="w3-circle" src="https://www.w3schools.com/w3css/img_avtar.jpg" style="height:55px"><br>
             </div>
-            <div class="w3-col m9 l3">
-                <label data-ng-if="vm.repos">
-                    Ordenar Repositórios
-                    <select name="selectOrdenarRepos"
-                            data-ng-model="vm.ordernarRepos">
-                        <option value="name">Alfabeticamente</option>
-                        <option value="-stargazers_count">Número de estrelas</option>
-                        <option value="-open_issues">Questões Abertas</option>
-                    </select>
-                </label>
-                <label data-ng-if="vm.repos && vm.languageList">
-                    Filtrar por
-                    <select name="selectFiltro"
-                            data-ng-model="vm.filtroLinguagem">
-                        <option value="">Todas</option>
-                        <option value="{{item}}"
-                                data-ng-repeat="item in vm.languageList">{{item}}
-                        </option>
-                    </select>
-                </label>
+        </div>
+    </div>
+
+    <div class="w3-container w3-padding-32 w3-theme-l1">
+        <h2>Repositórios Favoritos</h2>
+    </div>
+
+    <div class="w3-container w3-padding-32 w3-theme-l2"
+         data-ng-if="vm.repos">
+        <label data-ng-if="vm.repos">
+            Ordenar Repositórios
+            <select name="selectOrdenarRepos"
+                    data-ng-model="vm.ordernarRepos">
+                <option value="name">Alfabeticamente</option>
+                <option value="-stargazers_count">Número de estrelas</option>
+                <option value="-open_issues">Questões Abertas</option>
+            </select>
+        </label>
+        <label data-ng-if="vm.repos && vm.languageList">
+            Filtrar por
+            <select name="selectFiltro"
+                    data-ng-model="vm.filtroLinguagem">
+                <option value="">Todas</option>
+                <option value="{{item}}"
+                        data-ng-repeat="item in vm.languageList">{{item}}
+                </option>
+            </select>
+        </label>
+    </div>
+
+    <div class="w3-row">
+        <div class="w3-row-padding w3-section"
+             data-ng-if="vm.repos">
+            <div class="card-repo w3-third"
+                 data-ng-repeat="repo in vm.repos | orderBy : vm.ordernarRepos | filter : vm.filtroLinguagem">
+                <div class="w3-card-2">
+                    <div class="w3-row">
+                        <div class="w3-col l4">
+                            <a target="_blank" data-ng-href="{{repo.html_url | trustUrl}}"><img data-ng-src="{{ repo.owner.avatar_url | trustUrl }}" width="100%"></a>
+                        </div>
+
+                        <div class="descricao w3-col l8">
+                            <h4><a target="_blank" data-ng-href="{{repo.html_url | trustUrl}}">{{repo.name}}</a></h4>
+                            <div class="texto-descricao"><p>{{repo.description}}</p></div>
+                            <div data-ng-if="repo.language"><i class="fa fa-code" aria-hidden="true"></i> {{repo.language}}</div>
+                            <span><i class="fa fa-star" aria-hidden="true"></i> {{repo.stargazers_count}}</span>
+                            <span><i class="fa fa-question-circle-o" aria-hidden="true"></i> {{repo.open_issues_count}}</span>
+                            <div><i class="fa fa-clock-o" aria-hidden="true"></i> {{repo.created_at | date : 'dd/MM/yyyy'}}</div>
+                            <div><i class="fa fa-calendar" aria-hidden="true"></i> {{repo.pushed_at | date : 'dd/MM/yyyy'}}</div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div class="repo-erro" data-ng-if="vm.getStarredRepos.err">
+            :( Houve um problema na resposta do Github...
         </div>
     </div>
 </div>

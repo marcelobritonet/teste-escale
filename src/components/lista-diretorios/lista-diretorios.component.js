@@ -10,11 +10,10 @@
         });
 
     ListaDiretoriosController.$inject = [
-        'userService',
-        '$sce'
+        'userService'
     ];
 
-    function ListaDiretoriosController(userService, $sce) {
+    function ListaDiretoriosController(userService) {
         var vm = this;
 
         vm.user = 'wilfernandesjr';
@@ -37,13 +36,21 @@
         function getStarredRepos(user) {
             delete vm.languageList;
             delete vm.filtroLinguagem;
+            delete vm.getStarredRepos.err;
+            delete vm.repos;
 
             userService.getStarredRepos(user)
                 .then(function (repos) {
-                    vm.getStarredRepos.loading = false;
                     vm.repos = repos;
                     vm.languageList = getLanguagesList(repos);
                     console.log(repos)
+                })
+                .catch(function (err) {
+                    console.log(err);
+                    vm.getStarredRepos.err = true;
+                })
+                .finally(function () {
+                    vm.getStarredRepos.loading = false;
                 })
         }
 
