@@ -12,7 +12,7 @@
 
         $stateProvider
             .state('home', {
-                url: '/',
+                url: '/:user',
                 views: {
                     'header':{
                         template: '<header-box></header-box>'

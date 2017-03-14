@@ -5,11 +5,12 @@
         </div>
 
         <div class="user-search w3-col l7 s12 w3-container w3-padding-16 w3-xlarge">
-            <input class="w3-border-0 w3-show-inline-block w3-theme" placeholder="username git"
+            <input class="w3-border-0 w3-show-inline-block w3-theme" placeholder="procure por um usuário"
+                   key-enter="vm.searchUser(vm.user)"
                    data-ng-model="vm.user">
 
             <i class="w3-xlarge fa fa-search"
-               data-ng-click="vm.getStarredRepos(vm.user)"
+               data-ng-click="vm.searchUser(vm.user)"
                data-ng-disabled="vm.getStarredRepos.loading"></i>
         </div>
 
