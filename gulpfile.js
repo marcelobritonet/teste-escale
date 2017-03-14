@@ -13,7 +13,8 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync').create(),
     spa = require('browser-sync-spa'),
     connect = require('gulp-connect'),
-    imagemin = require('gulp-imagemin');
+    imagemin = require('gulp-imagemin'),
+    ngAnnotate = require('gulp-ng-annotate');
 
 var sassOptions = {
     errLogToConsole: true,
@@ -65,7 +66,7 @@ gulp.task('build', ['fonts', 'styles', 'images', 'modal'], function () {
         './src/Web.config'
     ])
         .pipe(useref())
-        .pipe(gulpif('*.js', uglify()))
+        // .pipe(gulpif('*.js', uglify()))
         .pipe(gulpif('*.css', cleanCss()))
         .pipe(gulp.dest('_dist'));
 });
